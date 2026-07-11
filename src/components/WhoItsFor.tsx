@@ -1,20 +1,24 @@
 import Reveal from "@/components/Reveal";
 import SectionLabel from "@/components/SectionLabel";
+import { HardHatIcon, TrowelIcon, KeysIcon } from "@/components/BlueprintIcons";
 
 const AUDIENCES = [
   {
     code: "A-01",
     title: "Small contractors",
+    icon: HardHatIcon,
     body: "You run jobs, not paperwork. Get a construction phase plan and RAMS pack you can fill in the night before the job starts.",
   },
   {
     code: "A-02",
     title: "Sole-trader builders",
+    icon: TrowelIcon,
     body: "One-person outfit, same legal duties. Our templates cover the documents clients and principal contractors keep asking for.",
   },
   {
     code: "A-03",
     title: "Landlords & refurb investors",
+    icon: KeysIcon,
     body: "Refurbishing a property counts as construction work. Start with the pre-start pack so the project begins on paper, not on site.",
   },
 ];
@@ -38,7 +42,8 @@ export default function WhoItsFor() {
                   <span aria-hidden className="h-2 w-2 bg-accent" />
                 </div>
                 <div className="flex-1 px-5 py-5">
-                  <h3 className="font-display text-lg font-bold text-ink">{a.title}</h3>
+                  <a.icon className="h-10 w-10 text-primary" />
+                  <h3 className="font-display mt-4 text-lg font-bold text-ink">{a.title}</h3>
                   <p className="mt-2.5 text-sm leading-relaxed text-ink/70">{a.body}</p>
                 </div>
               </div>

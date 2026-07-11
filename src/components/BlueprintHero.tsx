@@ -119,10 +119,20 @@ export default function BlueprintHero() {
               <text x="76" y="274" textAnchor="end" fontFamily="var(--font-plex-mono)" fontSize="12" fill="var(--primary)">Method statement</text>
             </g>
           </svg>
-          <div className="mt-3 flex items-center justify-between border-t border-ink/15 pt-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-ink/60">
-              Dwg. PP-001 — Rear extension
-            </span>
+          <div className="mt-4 grid grid-cols-2 border border-ink/25 sm:grid-cols-4">
+            {[
+              { label: "Dwg no.", value: "PP-001" },
+              { label: "Title", value: "Rear extension" },
+              { label: "Scale", value: "1:50 @ A3" },
+              { label: "Rev", value: "A — issued" },
+            ].map((cell) => (
+              <div key={cell.label} className="border-ink/25 px-3 py-1.5 [&:not(:first-child)]:border-l max-sm:[&:nth-child(3)]:border-l-0 max-sm:[&:nth-child(n+3)]:border-t">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-ink/50">{cell.label}</p>
+                <p className="font-mono text-xs text-ink">{cell.value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 flex items-center justify-end">
             <span className="border-2 border-stamp px-2 py-0.5 font-mono text-[11px] font-medium uppercase tracking-widest text-stamp [transform:rotate(-2deg)]">
               Paperwork ready
             </span>

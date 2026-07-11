@@ -5,17 +5,28 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import SectionLabel from "@/components/SectionLabel";
+import {
+  SheetIcon,
+  PlanIcon,
+  ChecklistIcon,
+  ToolboxIcon,
+  HouseIcon,
+  KeyDocIcon,
+  StarSheetIcon,
+  SpeechIcon,
+} from "@/components/BlueprintIcons";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CATEGORIES = [
-  { code: "S-01", name: "CDM starter packs", note: "The bundle most jobs start with" },
-  { code: "S-02", name: "Construction phase plans", note: "The document every notifiable job needs" },
-  { code: "S-03", name: "Site safety checklists", note: "Daily, weekly and pre-start checks" },
-  { code: "S-04", name: "Small contractor toolkits", note: "RAMS, inductions and toolbox talks" },
-  { code: "S-05", name: "Property refurb templates", note: "CDM-lite packs for refurbishment work" },
-  { code: "S-06", name: "Landlord & HMO docs", note: "Keeping rented property paperwork straight" },
-  { code: "S-07", name: "New releases", note: "The latest templates as we build them" },
+  { code: "S-01", name: "CDM starter packs", note: "The bundle most jobs start with", icon: SheetIcon },
+  { code: "S-02", name: "Construction phase plans", note: "The document every notifiable job needs", icon: PlanIcon },
+  { code: "S-03", name: "Site safety checklists", note: "Daily, weekly and pre-start checks", icon: ChecklistIcon },
+  { code: "S-04", name: "Small contractor toolkits", note: "RAMS, inductions and toolbox talks", icon: ToolboxIcon },
+  { code: "S-05", name: "Property refurb templates", note: "CDM-lite packs for refurbishment work", icon: HouseIcon },
+  { code: "S-06", name: "Landlord & HMO docs", note: "Keeping rented property paperwork straight", icon: KeyDocIcon },
+  { code: "S-07", name: "New releases", note: "The latest templates as we build them", icon: StarSheetIcon },
+  { code: "S-08", name: "Request a template", note: "Tell us what your next job needs", icon: SpeechIcon },
 ];
 
 export default function Categories() {
@@ -47,10 +58,10 @@ export default function Categories() {
         <div className="text-center">
           <SectionLabel index="03" title="Shop sections" />
           <h2 className="font-display mt-5 text-3xl font-bold text-ink sm:text-4xl">
-            Seven sections. Find the document, not the jargon.
+            Find the document, not the jargon.
           </h2>
         </div>
-        <div ref={gridRef} className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div ref={gridRef} className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {CATEGORIES.map((cat) => (
             <a
               key={cat.code}
@@ -63,8 +74,9 @@ export default function Categories() {
                 <span className="font-mono text-[11px] uppercase tracking-widest text-primary">{cat.code}</span>
                 <span className="font-mono text-[11px] text-ink/50 transition group-hover:text-primary">↗</span>
               </div>
-              <div className="px-5 py-4">
-                <h3 className="font-display text-base font-bold text-ink group-hover:text-primary">
+              <div className="px-5 py-5">
+                <cat.icon className="h-9 w-9 text-primary/70 transition group-hover:text-primary" />
+                <h3 className="font-display mt-3 text-base font-bold leading-snug text-ink group-hover:text-primary">
                   {cat.name}
                 </h3>
                 <p className="mt-1 text-sm text-ink/65">{cat.note}</p>

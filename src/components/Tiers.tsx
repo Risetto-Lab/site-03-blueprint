@@ -3,6 +3,7 @@ import SectionLabel from "@/components/SectionLabel";
 
 const TIERS = [
   {
+    code: "T-01",
     name: "Single templates",
     price: "£4.99–£14.99",
     blurb: "One document, one job. Pick exactly what you're missing.",
@@ -10,6 +11,7 @@ const TIERS = [
     featured: false,
   },
   {
+    code: "T-02",
     name: "Starter packs",
     price: "£19.99–£49.99",
     blurb: "The documents a whole job needs, bundled and ready to edit.",
@@ -17,6 +19,7 @@ const TIERS = [
     featured: true,
   },
   {
+    code: "T-03",
     name: "Premium toolkits",
     price: "£79–£199",
     blurb: "The full filing cabinet for a small contracting business.",
@@ -39,7 +42,7 @@ export default function Tiers() {
           {TIERS.map((tier, i) => (
             <Reveal key={tier.name} delay={i * 0.08}>
               <div
-                className={`relative flex h-full flex-col border bg-bg p-7 ${
+                className={`relative flex h-full flex-col border bg-bg ${
                   tier.featured ? "border-2 border-primary" : "border-ink/15"
                 }`}
               >
@@ -48,17 +51,23 @@ export default function Tiers() {
                     Most popular
                   </span>
                 )}
-                <h3 className="font-display text-lg font-bold text-ink">{tier.name}</h3>
-                <p className="font-display mt-3 text-3xl font-bold text-primary">{tier.price}</p>
-                <p className="mt-3 text-sm leading-relaxed text-ink/70">{tier.blurb}</p>
-                <ul className="mt-5 flex flex-col gap-2.5 border-t border-ink/10 pt-5">
-                  {tier.items.map((item) => (
-                    <li key={item} className="flex gap-2.5 text-sm text-ink/80">
-                      <span aria-hidden className="font-mono text-stamp">✓</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <div className={`flex items-center justify-between border-b px-7 py-2.5 ${tier.featured ? "border-primary/40" : "border-ink/15"}`}>
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-primary">{tier.code}</span>
+                  <span aria-hidden className="h-2 w-2 bg-accent" />
+                </div>
+                <div className="flex flex-1 flex-col p-7 pt-5">
+                  <h3 className="font-display text-lg font-bold text-ink">{tier.name}</h3>
+                  <p className="font-display mt-3 text-3xl font-bold text-primary">{tier.price}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{tier.blurb}</p>
+                  <ul className="mt-5 flex flex-col gap-2.5 border-t border-ink/10 pt-5">
+                    {tier.items.map((item) => (
+                      <li key={item} className="flex gap-2.5 text-sm text-ink/80">
+                        <span aria-hidden className="font-mono text-stamp">✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </Reveal>
           ))}
