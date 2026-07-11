@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #eff3f6;
+  --ink: #16283a;
+  --primary: #1f63a8;
+  --accent: #ffb800;
+  --stamp: #2e7d5b;
+  --tint: #d6e4f0;
+  --panel: #f8fafc;
+  --grid-line: #d6e4f0;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-stamp: var(--stamp);
+  --color-tint: var(--tint);
+  --color-panel: var(--panel);
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.bg-grid {
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-grid-dark {
+  background-image: linear-gradient(rgba(214, 228, 240, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 228, 240, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
