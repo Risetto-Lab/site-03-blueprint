@@ -141,7 +141,7 @@ export default function BlueprintHero() {
               { label: "Rev", value: "A — issued" },
             ].map((cell) => (
               <div key={cell.label} className="border-ink/25 px-3 py-1.5 [&:not(:first-child)]:border-l max-sm:[&:nth-child(3)]:border-l-0 max-sm:[&:nth-child(n+3)]:border-t">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-ink/50">{cell.label}</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-ink/70">{cell.label}</p>
                 <p className="font-mono text-xs text-ink">{cell.value}</p>
               </div>
             ))}

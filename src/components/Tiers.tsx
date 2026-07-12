@@ -72,7 +72,7 @@ export default function Tiers() {
             </Reveal>
           ))}
         </div>
-        <p className="mt-8 text-center font-mono text-xs text-ink/60">
+        <p className="mt-8 text-center font-mono text-xs text-ink/75">
           Prices set on Etsy at launch. Digital downloads — nothing posted, nothing to wait for.
         </p>
       </div>
