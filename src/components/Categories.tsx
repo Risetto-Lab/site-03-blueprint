@@ -63,6 +63,7 @@ export default function Categories() {
         </div>
         <div ref={gridRef} className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {CATEGORIES.map((cat) => (
+            // TODO: replace with real Etsy shop URL (per-section deep link) at launch.
             <a
               key={cat.code}
               href="https://www.etsy.com"

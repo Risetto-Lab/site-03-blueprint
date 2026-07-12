@@ -34,6 +34,7 @@ export default function SiteHeader() {
             </a>
           ))}
         </nav>
+        {/* TODO: replace with real Etsy shop URL at launch. */}
         <a
           href="https://www.etsy.com"
           target="_blank"

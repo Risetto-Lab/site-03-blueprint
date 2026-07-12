@@ -14,6 +14,7 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex flex-col items-center gap-4 sm:items-end">
+          {/* TODO: replace with real Etsy shop URL at launch. */}
           <a
             href="https://www.etsy.com"
             target="_blank"

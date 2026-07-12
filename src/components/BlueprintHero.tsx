@@ -65,6 +65,7 @@ export default function BlueprintHero() {
             refurb landlords — not consultancy budgets.
           </p>
           <div className="hero-entrance mt-8 flex flex-wrap gap-4">
+            {/* TODO: replace with real Etsy shop URL at launch. */}
             <a
               href="https://www.etsy.com"
               target="_blank"
