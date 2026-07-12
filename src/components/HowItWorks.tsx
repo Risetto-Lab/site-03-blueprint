@@ -28,12 +28,21 @@ export default function HowItWorks() {
     if (reduced || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      const steps = gsap.utils.toArray<HTMLElement>(".step-row");
+      const setActiveStep = (progress: number) => {
+        const idx = Math.min(steps.length - 1, Math.floor(progress * steps.length));
+        steps.forEach((el, i) => {
+          el.classList.toggle("step-active", i === idx);
+        });
+      };
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 65%",
           end: "bottom 60%",
           scrub: 1,
+          onUpdate: (self) => setActiveStep(self.progress),
         },
       });
       tl.to("#morph-shape", { morphSVG: SHAPE_CLIP, duration: 1, ease: "none" }, 0.5);
@@ -76,7 +85,10 @@ export default function HowItWorks() {
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-2">
           <ol className="flex flex-col gap-6">
             {STEPS.map((step) => (
-              <li key={step.n} className="step-row flex gap-5 border border-tint/20 bg-white/5 p-5">
+              <li
+                key={step.n}
+                className="step-row flex gap-5 border border-tint/20 bg-white/5 p-5 transition-colors duration-300 [&.step-active]:border-accent [&.step-active]:bg-white/10"
+              >
                 <span
                   aria-hidden
                   className="flex h-9 w-9 shrink-0 items-center justify-center border-2 border-accent font-display text-base font-bold text-accent"

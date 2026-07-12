@@ -8,10 +8,18 @@ export default function BlueprintHero() {
   const svgRef = useRef<SVGSVGElement>(null);
   const reduced = useReducedMotion();
 
+  const sectionRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
-    if (reduced || !svgRef.current) return;
+    if (reduced || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".hero-entrance",
+        { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", stagger: 0.12 }
+      );
+
       const strokes = gsap.utils.toArray<SVGPathElement>(".bp-draw");
       strokes.forEach((path) => {
         const len = path.getTotalLength();
@@ -30,27 +38,33 @@ export default function BlueprintHero() {
         { opacity: 1, duration: 0.5, stagger: 0.1 },
         "-=0.6"
       );
-    }, svgRef);
+      tl.fromTo(
+        ".bp-stamp",
+        { opacity: 0, scale: 1.7, rotate: -10 },
+        { opacity: 1, scale: 1, rotate: -2, duration: 0.35, ease: "power4.in" },
+        "-=0.1"
+      );
+    }, sectionRef);
 
     return () => ctx.revert();
   }, [reduced]);
 
   return (
-    <section className="bg-grid border-b border-ink/10 px-6 pb-16 pt-28 sm:px-12 sm:pt-36">
+    <section ref={sectionRef} className="bg-grid border-b border-ink/10 px-6 pb-16 pt-28 sm:px-12 sm:pt-36">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+          <p className="hero-entrance font-mono text-xs uppercase tracking-[0.2em] text-primary">
             Sheet 01 — UK CDM &amp; property templates
           </p>
-          <h1 className="font-display mt-5 text-4xl font-bold leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
+          <h1 className="hero-entrance font-display mt-5 text-4xl font-bold leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
             Get the paperwork sorted before the job starts.
           </h1>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink/75">
+          <p className="hero-entrance mt-6 max-w-lg text-lg leading-relaxed text-ink/75">
             Editable, UK-specific CDM and property templates in plain
             English. We built them for small contractors, sole traders and
             refurb landlords — not consultancy budgets.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="hero-entrance mt-8 flex flex-wrap gap-4">
             <a
               href="https://www.etsy.com"
               target="_blank"
@@ -66,7 +80,7 @@ export default function BlueprintHero() {
               See the templates
             </a>
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="hero-entrance mt-8 flex flex-wrap gap-3">
             {["Editable Word files", "Plain English", "Built from public HSE guidance"].map(
               (item) => (
                 <span
@@ -116,7 +130,7 @@ export default function BlueprintHero() {
             </g>
             <g className="bp-label">
               <line x1="180" y1="305" x2="80" y2="280" stroke="var(--ink)" strokeWidth="1" opacity="0.6" />
-              <text x="76" y="274" textAnchor="end" fontFamily="var(--font-plex-mono)" fontSize="12" fill="var(--primary)">Method statement</text>
+              <text x="8" y="272" fontFamily="var(--font-plex-mono)" fontSize="12" fill="var(--primary)">Method statement</text>
             </g>
           </svg>
           <div className="mt-4 grid grid-cols-2 border border-ink/25 sm:grid-cols-4">
@@ -133,7 +147,7 @@ export default function BlueprintHero() {
             ))}
           </div>
           <div className="mt-3 flex items-center justify-end">
-            <span className="border-2 border-stamp px-2 py-0.5 font-mono text-[11px] font-medium uppercase tracking-widest text-stamp [transform:rotate(-2deg)]">
+            <span className="bp-stamp border-2 border-stamp px-2 py-0.5 font-mono text-[11px] font-medium uppercase tracking-widest text-stamp [transform:rotate(-2deg)]">
               Paperwork ready
             </span>
           </div>

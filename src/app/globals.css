@@ -50,3 +50,18 @@ section[id] {
   outline-offset: 3px;
   border-radius: 2px;
 }
+
+.category-card,
+#for .border {
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-card:hover {
+    transform: none;
+  }
+}
